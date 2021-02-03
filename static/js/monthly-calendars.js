@@ -12,9 +12,9 @@ $(function () {
         <table class="table table-bordered" width="100%" cellspacing="0">
             <thead class="font-weight-bold">
                 <tr>
-                    <th class="text-center table-primary" colspan="7">${monthsArray[month]}</th>
+                    <th class="text-center text-light bg-primary" colspan="7">${monthsArray[month]}</th>
                 </tr>
-                <tr class="">
+                <tr class="table-primary text-light">
                     <th>Sunday</th>
                     <th>Monday</th>
                     <th>Tuesday</th>
@@ -40,19 +40,24 @@ $(function () {
         let day_count = 0;
 
         for (let j = 0; j < blocks_needed / 7; j++) {
-            const $dayCountRow = $('<tr>');
+            const $dayCountRow = $('<tr></tr>');
             const $eventRow = $('<tr>');
 
             for (let i = 0; i < weekdayArray.length; i++) {
 
                 // Append blanks
                 if (block_count < firstDayOfMonth || day_count >= daysInMonth) {
-                    $dayCountRow.append($('<td class="table-secondary"></td>'));
+                    $dayCountRow.append($('<td class="table-secondary py-1"></td>'));
                     $eventRow.append($('<td class="table-secondary"></td>'));
                 } else {
-                    $dayCountRow.append($(`<td>${day_count + 1}</td>`));
+                    if (today.getDay() === day_count + 1 && today.getMonth() === month) {
+                        $dayCountRow.append($(`<td class="table-warning py-1">${day_count + 1}</td>`));
+                        $eventRow.append($('<td class="table-warning"></td>'));
+                    } else {
+                        $dayCountRow.append($(`<td class="py-1">${day_count + 1}</td>`));
+                        $eventRow.append($('<td>'));
+                    }
                     day_count++;
-                    $eventRow.append($('<td>'));
                 }
 
                 block_count++;
