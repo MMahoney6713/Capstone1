@@ -81,7 +81,10 @@ $(function () {
     function calendarBlocksNeeded(firstDayOfMonth, daysInMonth) {
         // Sum the number of blanks to the first day, plus days in month, plus blanks to end of calendar
         const numberBlanksToFirstDay = firstDayOfMonth;
-        const numberBlanksAtEnd = 7 - (numberBlanksToFirstDay + daysInMonth) % 7;
+        let numberBlanksAtEnd = 0;
+        if ((numberBlanksToFirstDay + daysInMonth) % 7 !== 0) {
+            numberBlanksAtEnd = 7 - (numberBlanksToFirstDay + daysInMonth) % 7;
+        }
 
         return numberBlanksToFirstDay + numberBlanksAtEnd + daysInMonth;
     }
@@ -99,7 +102,6 @@ $(function () {
                 </button>
                 <div class="dropdown-menu dropdown-menu-right shadow p-1 m-1"
                     aria-labelledby="dropdown">
-                    <!-- Dropdown menu links -->
                     <a class="dropdown-item" href="#">
                         <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-info"></i>
                         Update
@@ -118,7 +120,7 @@ $(function () {
 
 
 
-    const numberOfMonthsToShow = 3;
+    const numberOfMonthsToShow = 10;
     const today = new Date();
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
