@@ -1,6 +1,11 @@
 $(function () {
+
+
     // Helpful jQuery objects for later use
     const $monthlyViewDiv = $('.month-views');
+
+
+
 
     function buildCalendarHTML(month, year, today) {
         const weekdayArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -9,19 +14,19 @@ $(function () {
 
         // Build header
         const $calendarHead = $(`
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-bordered py-2 my-2" width="100%" cellspacing="0">
             <thead class="font-weight-bold">
                 <tr>
                     <th class="text-center text-light bg-primary" colspan="7">${monthsArray[month]}</th>
                 </tr>
                 <tr class="table-primary text-light">
-                    <th>Sunday</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
+                    <th class="calendar-col">Sun.</th>
+                    <th class="calendar-col">Mon.</th>
+                    <th class="calendar-col">Tues.</th>
+                    <th class="calendar-col">Wed.</th>
+                    <th class="calendar-col">Thur.</th>
+                    <th class="calendar-col">Fri.</th>
+                    <th class="calendar-col">Sat.</th>
                 </tr>
             </thead>
         </table>
@@ -41,37 +46,37 @@ $(function () {
 
         for (let j = 0; j < blocks_needed / 7; j++) {
             const $dayCountRow = $('<tr></tr>');
-            const $eventRow = $('<tr>');
+            const $eventRow = $('<tr class="event-row">');
 
             for (let i = 0; i < weekdayArray.length; i++) {
 
                 // Append blanks
                 if (block_count < firstDayOfMonth || day_count >= daysInMonth) {
                     $dayCountRow.append($('<td class="table-secondary py-1"></td>'));
-                    $eventRow.append($('<td class="table-secondary"></td>'));
+                    $eventRow.append($('<td class="table-secondary p-1"></td>'));
                 } else {
                     if (today.getDay() === day_count + 1 && today.getMonth() === month) {
                         $dayCountRow.append($(`<td class="table-warning py-1">${day_count + 1}</td>`));
-                        $eventRow.append($('<td class="table-warning"></td>'));
+                        $eventRow.append($(`
+                        <td class="table-warning event-space p-1">
+                            <button type="button" class="btn btn-success btn-block event p-0">Go shopping!!!!!!!!!</button>
+                        </td>`));
                     } else {
                         $dayCountRow.append($(`<td class="py-1">${day_count + 1}</td>`));
-                        $eventRow.append($('<td>'));
+                        $eventRow.append($('<td class="event-space p-1">'));
                     }
                     day_count++;
                 }
 
                 block_count++;
             }
-
             $calendarBody.append($dayCountRow);
             $calendarBody.append($eventRow);
-
         }
-
         $calendarHead.append($calendarBody);
         $monthlyViewDiv.append($calendarHead);
-
     }
+
 
     function calendarBlocksNeeded(firstDayOfMonth, daysInMonth) {
         // Sum the number of blanks to the first day, plus days in month, plus blanks to end of calendar
@@ -80,6 +85,38 @@ $(function () {
 
         return numberBlanksToFirstDay + numberBlanksAtEnd + daysInMonth;
     }
+
+
+    $monthlyViewDiv.on('click', 'td.event-space', function (event) {
+        if (event.target.nodeName === "BUTTON") {
+            console.log('button')
+        } else {
+            $newEvent = $(`
+            <div class="dropright">
+                <button type="button" class="btn btn-secondary btn-block event p-0 my-1"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    New Event
+                </button>
+                <div class="dropdown-menu dropdown-menu-right shadow p-1 m-1"
+                    aria-labelledby="dropdown">
+                    <!-- Dropdown menu links -->
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-info"></i>
+                        Update
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-trash-alt fa-sm fa-fw mr-2 text-danger"></i>
+                        Rubbish
+                    </a>
+                </div>
+            </div>
+            `)
+            $(this).append($newEvent)
+        }
+    })
+
+
+
 
     const numberOfMonthsToShow = 3;
     const today = new Date();

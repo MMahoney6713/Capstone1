@@ -19,40 +19,57 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <div class="table-responsive mx-3">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
                                 <thead>
-                                    <tr>
-                                        <th>Sunday</th>
-                                        <th>Monday</th>
-                                        <th>Tuesday</th>
-                                        <th>Wednesday</th>
-                                        <th>Thursday</th>
-                                        <th>Friday</th>
-                                        <th>Saturday</th>
+                                    <tr class="bg-primary text-center text-light">
+                                        <th class="calendar-col">Sunday</th>
+                                        <th class="calendar-col">Monday</th>
+                                        <th class="calendar-col">Tuesday</th>
+                                        <th class="calendar-col">Wednesday</th>
+                                        <th class="calendar-col">Thursday</th>
+                                        <th class="calendar-col">Friday</th>
+                                        <th class="calendar-col">Saturday</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <a href="#" class="btn btn-success btn-icon-split btn-block">
-                                                <span class="text">Go shopping</span>
+                                        <td class="p-1">
+                                            <a href="#" class="btn btn-success btn-block event p-0">
+                                                <span class="text p-0">Go shopping!!!!!!!!!</span>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split btn-block">
-                                                <span class="text">Movies</span>
+                                            <button type="button" class="btn btn-success btn-block event p-0">Go
+                                                shopping!!!!!!!!!</button>
+                                            <a href="#" class="btn btn-danger btn-block event p-0">
+                                                <span class="text p-0">Movies</span>
                                             </a>
                                         </td>
                                         <td>Your day is free!</td>
                                         <td>Your day is free!</td>
-                                        <td>
-                                            <a href="#" class="btn btn-danger btn-icon-split btn-block">
-                                                <span class="text">Dinner with friends</span>
+                                        <td class="p-1">
+                                            <a href="#" class="btn btn-danger btn-block event p-0">
+                                                <span class="text p-0">Dinner with friendsssss</span>
                                             </a>
                                         </td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary btn-block">
-                                                <span class="text">CS50 HW</span>
-                                            </a>
+                                        <td class="p-1">
+                                            <div class="dropright">
+                                                <button type="button" class="btn btn-primary btn-block event p-0"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    CS50 HW
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right shadow p-1 m-1"
+                                                    aria-labelledby="dropdown">
+                                                    <!-- Dropdown menu links -->
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-info"></i>
+                                                        Update
+                                                    </a>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="fas fa-trash-alt fa-sm fa-fw mr-2 text-danger"></i>
+                                                        Rubbish
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>Your day is free!</td>
                                         <td>Your day is free!</td>

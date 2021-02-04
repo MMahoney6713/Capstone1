@@ -1,0 +1,20 @@
+table * {
+    font-size: 1em;
+}
+
+.event {
+    font-size: .8em;
+}
+
+.event-row {
+    height: 4.5em;
+    font-size: 1em;
+}
+
+.calendar-col {
+    width: 14.29%;
+}
+
+.dropdown-item:hover {
+    font-weight: 700;
+}

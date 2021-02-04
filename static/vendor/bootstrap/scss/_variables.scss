@@ -151,6 +151,7 @@ $spacers: map-merge(
 $sizes: () !default;
 $sizes: map-merge(
   (
+    7: 15%,
     25: 25%,
     50: 50%,
     75: 75%,
