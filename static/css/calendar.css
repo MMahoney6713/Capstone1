@@ -18,3 +18,7 @@ table * {
 .dropdown-item:hover {
     font-weight: 700;
 }
+
+.overflow {
+    overflow: visible;
+}

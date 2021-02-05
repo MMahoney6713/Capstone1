@@ -95,12 +95,12 @@ $(function () {
             console.log('button')
         } else {
             $newEvent = $(`
-            <div class="dropright">
+            <div class="dropright show">
                 <button type="button" class="btn btn-secondary btn-block event p-0 my-1"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     New Event
                 </button>
-                <div class="dropdown-menu dropdown-menu-right shadow p-1 m-1"
+                <div class="dropdown-menu dropdown-menu-right shadow p-1 m-1 overflow show"
                     aria-labelledby="dropdown">
                     <a class="dropdown-item" href="#">
                         <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-info"></i>
@@ -114,13 +114,17 @@ $(function () {
             </div>
             `)
             $(this).append($newEvent)
+            // $('body').on('click', function(event) {
+            //     $('.dropright div').removeClass('show');
+            // })
+            console.log(event)
         }
     })
 
 
 
 
-    const numberOfMonthsToShow = 10;
+    const numberOfMonthsToShow = 3;
     const today = new Date();
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
