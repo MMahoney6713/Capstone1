@@ -17,6 +17,7 @@ table * {
 
 .dropdown-item:hover {
     font-weight: 700;
+    cursor: pointer;
 }
 
 .overflow {
